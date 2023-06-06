@@ -31,6 +31,6 @@ public class Risky {
 
         // checked exception - will NOT compile
         // Unhandled exception: java.io.FileNotFoundException
-        FileInputStream file = new FileInputStream("file.txt");
+//        FileInputStream file = new FileInputStream("file.txt");
     }
 }
