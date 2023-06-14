@@ -61,6 +61,22 @@ public class SwitchChallenge {
         }
     }
 
+    public static void printDayOfWeek(int day) {
+        // again, could just as easily be a HashMap(int => dayOfWeek)
+        String dayOfWeek = switch (day) {
+            case 0 -> "Sunday";
+            case 1 -> "Monday";
+            case 2 -> "Tuesday";
+            case 3 -> "Wednesday";
+            case 4 -> "Thursday";
+            case 5 -> "Friday";
+            case 6 -> "Saturday";
+            default -> "Invalid Day";
+        };
+
+        System.out.println("Day " + day + " is " + dayOfWeek);
+    }
+
     public static void main(String[] args) {
         char a = 'A';
         char b = 'M';
@@ -71,5 +87,9 @@ public class SwitchChallenge {
         System.out.println("NATO word for " + b + " is " + getNatoWord(b));
         System.out.println("NATO word for " + c + " is " + getNatoWord(c));
         System.out.println("NATO word for " + d + " is " + getNatoWord(d));
+
+        for (int day = 0; day <= 7; day++) {
+            printDayOfWeek(day);
+        }
     }
 }
