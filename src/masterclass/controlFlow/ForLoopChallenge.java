@@ -36,5 +36,19 @@ public class ForLoopChallenge {
 
             if (primeCount >= 3) break;
         }
+
+        int sumOfFactors = 0;
+        int factorCount = 0;
+        for (int i = 1; i <= 1000; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                sumOfFactors += i;
+                System.out.println(i + " is divisible by 3 and 5");
+                factorCount++;
+            }
+
+            if (factorCount == 5) break;
+        }
+
+        System.out.println("Sum of factors: " + sumOfFactors);
     }
 }
