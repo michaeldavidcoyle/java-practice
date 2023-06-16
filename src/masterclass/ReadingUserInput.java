@@ -19,11 +19,25 @@ public class ReadingUserInput {
         String name = scanner.nextLine();
         System.out.println("Hi, " + name + ", thanks for taking the course.");
 
-        System.out.print("What year were you born? ");
-        String dob = scanner.nextLine();
-        int age = currentYear - Integer.parseInt(dob);
+        System.out.println("What year were you born? ");
+
+        boolean validDOB;
+        int age;
+
+        do {
+            System.out.print("Enter year >= " + (currentYear - 125) + " and <= " + currentYear + ": ");
+            String dob = scanner.nextLine();
+            age = validateDOB(currentYear, dob);
+            validDOB = age >= 0;
+        } while (!validDOB);
 
         return "So you are " + age + " years old.";
+    }
+
+    public static int validateDOB(int currentYear, String dob) {
+        int birthYear = Integer.parseInt(dob);
+        int age = currentYear - birthYear;
+        return (age > 0 && age <= 125) ? age : -1;
     }
 
     public static void main(String[] args) {
