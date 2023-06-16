@@ -21,14 +21,17 @@ public class ReadingUserInput {
 
         System.out.println("What year were you born? ");
 
-        boolean validDOB;
-        int age;
+        boolean validDOB = false;
+        int age = 0;
 
         do {
             System.out.print("Enter year >= " + (currentYear - 125) + " and <= " + currentYear + ": ");
-            String dob = scanner.nextLine();
-            age = validateDOB(currentYear, dob);
-            validDOB = age >= 0;
+            try {
+                age = validateDOB(currentYear, scanner.nextLine());
+                validDOB = age >= 0;
+            } catch (NumberFormatException e) {
+                System.out.println("Only numeric characters are allowed, please try again.");
+            }
         } while (!validDOB);
 
         return "So you are " + age + " years old.";
