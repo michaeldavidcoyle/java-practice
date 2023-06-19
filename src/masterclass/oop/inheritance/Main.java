@@ -30,6 +30,8 @@ public class Main {
         Dog wolf = new Dog("Wolf", 4);
         doAnimalStuff(wolf, "slow");
 
+        Fish goldfish = new Fish("Goldfish", 0.25, 2, 3);
+        doAnimalStuff(goldfish, "fast");
     }
 
     public static void doAnimalStuff(Animal animal, String speed) {
