@@ -15,4 +15,8 @@ public class Adventure extends Movie {
                 "Something Bad Happens"
         );
     }
+
+    public void watchAdventure() {
+        System.out.println("Watching an Adventure");
+    }
 }

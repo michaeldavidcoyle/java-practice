@@ -17,4 +17,8 @@ public class ScienceFiction extends Movie {
                 "The planet is saved"
         );
     }
+
+    public void watchScienceFiction() {
+        System.out.println("Watching a Science Fiction thriller");
+    }
 }
