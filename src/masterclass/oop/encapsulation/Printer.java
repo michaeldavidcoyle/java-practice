@@ -12,7 +12,7 @@ public class Printer {
 
     public int addToner(int tonerAmount) {
         int adjustedLevel = tonerLevel + tonerAmount;
-        if (adjustedLevel < 0 || adjustedLevel > 100) {
+        if (!(adjustedLevel >= 0 && adjustedLevel <= 100)) {
             return -1;
         }
         tonerLevel += tonerAmount;
@@ -23,7 +23,7 @@ public class Printer {
     public int printPages(int pages) {
         int jobPages = pages;
         if (duplex) {
-            jobPages = pages / 2 + 1;
+            jobPages = (pages / 2) + (pages % 2);
             System.out.print("Duplex flex. ");
         }
         pagesPrinted += jobPages;
