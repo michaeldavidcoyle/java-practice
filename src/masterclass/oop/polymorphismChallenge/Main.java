@@ -5,17 +5,17 @@ public class Main {
         Car car = new Car("2015 Honda Accord");
         testDrive(car);
 
-        GasPoweredCar gasolineCar = new GasPoweredCar(
+        Car gasolineCar = new GasPoweredCar(
                 "2015 Ford Explorer", 25, 6
         );
         testDrive(gasolineCar);
 
-        ElectricCar tesla = new ElectricCar(
+        Car tesla = new ElectricCar(
                 "2023 Tesla Model S", 396, 100
         );
         testDrive(tesla);
 
-        HybridCar prius = new HybridCar(
+        Car prius = new HybridCar(
                 "2023 Toyota Prius", 56, 12, 4
         );
         testDrive(prius);
