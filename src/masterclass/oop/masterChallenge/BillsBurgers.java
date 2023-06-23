@@ -23,6 +23,8 @@ public class BillsBurgers {
         customMeal.getBurger().customize("lettuce", "hold");
         customMeal.getBurger().customize("onion", "extra");
         customMeal.getBurger().customize("jalepeno", "extra");
+        customMeal.getDrink().setSize("large");
+        customMeal.getSide().setSize("large");
         customMeal.printOrder();
         System.out.println("-".repeat(24));
 

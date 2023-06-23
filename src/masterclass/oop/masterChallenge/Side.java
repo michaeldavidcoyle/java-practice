@@ -21,6 +21,11 @@ public class Side {
 
     public void setSize(String size) {
         if ( !(size.equals("small") || size.equals("medium") || size.equals("large")) ) return;
+        switch (size) {
+            case "small" -> price = BillsBurgers.smallFries;
+            case "medium" -> price = BillsBurgers.mediumFries;
+            case "large" -> price = BillsBurgers.largeFries;
+        }
         this.size = size;
     }
 
