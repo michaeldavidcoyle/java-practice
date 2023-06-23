@@ -15,6 +15,7 @@ public class Burger {
     private String onion = "onion";
     private String pickle = "";
     private String customTopping = "";
+    private boolean deluxe;
 
     protected static double costPerExtraPatty = 2.75;
     protected static double costPerCheeseSlice = 0.65;
@@ -46,6 +47,10 @@ public class Burger {
     }
 
     public String toppings() {
+        if (deluxe) {
+            cheeseSlices++;
+            baconSlices++;
+        }
         String patty = extraPatties > 0 ? String.format("%dx patty.....$%.2f%n", extraPatties, addCharge("patty")) : "";
         String cheese = cheeseSlices > 0 ? String.format("%dx cheese.....$%.2f%n", cheeseSlices, addCharge("cheese")) : "";
         String bacon = baconSlices > 0 ? String.format("%dx bacon.....$%.2f%n", baconSlices, addCharge("bacon")) : "";
@@ -71,11 +76,13 @@ public class Burger {
         return basePrice + extras;
     }
 
-    private double addCharge(String item) {
+    protected double addCharge(String item) {
+        int cheese = deluxe ? cheeseSlices - 1 : cheeseSlices;
+        int bacon = deluxe ? baconSlices - 1 : baconSlices;
         return switch (item) {
             case "patty" -> costPerExtraPatty * extraPatties;
-            case "cheese" -> costPerCheeseSlice * cheeseSlices;
-            case "bacon" -> costPerBacon * baconSlices;
+            case "cheese" -> costPerCheeseSlice * cheese;
+            case "bacon" -> costPerBacon * bacon;
             case "avocado" -> costPerAvocado * avocadoPortions;
             case "jalepeno" -> costPerJalepeno * jalepenoPortions;
             default -> 0d;
@@ -85,5 +92,61 @@ public class Burger {
     public void printOrder() {
         System.out.printf("%s.....$%.2f%n%s%n", type, basePrice, toppings());
 //        System.out.printf("Subtotal: $%.2f%n", total());
+    }
+
+    public int getExtraPatties() {
+        return extraPatties;
+    }
+
+    public int getCheeseSlices() {
+        return cheeseSlices;
+    }
+
+    public int getBaconSlices() {
+        return baconSlices;
+    }
+
+    public int getAvocadoPortions() {
+        return avocadoPortions;
+    }
+
+    public int getJalepenoPortions() {
+        return jalepenoPortions;
+    }
+
+    public String getMayo() {
+        return mayo;
+    }
+
+    public String getMustard() {
+        return mustard;
+    }
+
+    public String getLettuce() {
+        return lettuce;
+    }
+
+    public String getTomato() {
+        return tomato;
+    }
+
+    public String getOnion() {
+        return onion;
+    }
+
+    public String getPickle() {
+        return pickle;
+    }
+
+    public String getCustomTopping() {
+        return customTopping;
+    }
+
+    public boolean isDeluxe() {
+        return deluxe;
+    }
+
+    public void setDeluxe(boolean deluxe) {
+        this.deluxe = deluxe;
     }
 }

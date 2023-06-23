@@ -6,9 +6,15 @@ public class Meal {
     private Drink drink;
 
     public Meal() {
-        burger = new Burger("Bill Burger",  5.95);
-        side = new Side("fries", "medium", 2.75);
-        drink = new Drink("soda", "medium", 2.45);
+        burger = new Burger("Bill Burger",  BillsBurgers.single);
+        side = new Side("fries", "medium", BillsBurgers.mediumFries);
+        drink = new Drink("soda", "medium", BillsBurgers.soda);
+    }
+
+    public Meal(Burger burger) {
+        this.burger = burger;
+        side = new Side("fries", "medium", BillsBurgers.mediumFries);
+        drink = new Drink("soda", "medium", BillsBurgers.soda);
     }
 
     public void printOrder() {
