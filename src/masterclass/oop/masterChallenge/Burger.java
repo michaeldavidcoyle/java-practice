@@ -84,6 +84,6 @@ public class Burger {
 
     public void printOrder() {
         System.out.printf("%s.....$%.2f%n%s%n", type, basePrice, toppings());
-        System.out.printf("Total: $%.2f%n", total());
+//        System.out.printf("Subtotal: $%.2f%n", total());
     }
 }

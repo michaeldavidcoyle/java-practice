@@ -13,6 +13,10 @@ public class Drink {
         refillable = type.equals("tea") || type.equals("soda");
     }
 
+    public void printOrder() {
+        System.out.printf("%s %s.....$%.2f%n", size, type, price);
+    }
+
     public String getType() {
         return type;
     }

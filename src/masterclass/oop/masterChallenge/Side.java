@@ -11,6 +11,10 @@ public class Side {
         this.price = price;
     }
 
+    public void printOrder() {
+        System.out.printf("%s %s.....$%.2f%n", size, type, price);
+    }
+
     public String getSize() {
         return size;
     }
