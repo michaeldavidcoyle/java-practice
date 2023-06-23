@@ -29,6 +29,8 @@ public class BillsBurgers {
         System.out.println("-".repeat(24));
 
         Meal deluxeMeal = new Meal(new DeluxeBurger());
+        deluxeMeal.getBurger().customize("lettuce", "light");
+
         deluxeMeal.getBurger().customize("jalepeno", "add");
         deluxeMeal.printOrder();
     }

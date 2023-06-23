@@ -30,17 +30,18 @@ public class Burger {
 
     public void customize(String item, String level) {
         boolean extra = level.equals("extra");
+        boolean light = level.equals("light") || level.equals("easy");
         switch (item) {
             case "patty" -> extraPatties = extra ? 2 : 1;
             case "cheese" -> cheeseSlices = extra ? 2 : 1;
             case "bacon" -> baconSlices = extra ? 6 : 3;
             case "avocado" -> avocadoPortions = extra ? 2 : 1;
             case "jalepeno" -> jalepenoPortions = extra ? 2 : 1;
-            case "mayo" -> mayo = extra ? "extra mayo" : "";
-            case "mustard" -> mustard = extra ? "extra mustard" : "";
-            case "lettuce" -> lettuce = extra ? "extra lettuce" : "";
-            case "tomato" -> tomato = extra ? "extra tomato" : "";
-            case "onion" -> onion = extra ? "extra onion" : "";
+            case "mayo" -> mayo = extra ? "extra mayo" : (light ? "light mayo" : "");
+            case "mustard" -> mustard = extra ? "extra mustard" : (light ? "light mustard" : "");
+            case "lettuce" -> lettuce = extra ? "extra lettuce" : (light ? "light lettuce" : "");
+            case "tomato" -> tomato = extra ? "extra tomato" : (light ? "light tomato" : "");
+            case "onion" -> onion = extra ? "extra onion" : (light ? "light onion" : "");
             case "pickle" -> pickle = extra ? "extra pickle" : "pickle";
             default -> customTopping = extra ? ("extra " + item) : item;
         }
