@@ -1,14 +1,14 @@
 package masterclass.oop.masterChallenge;
 
 public class Side {
-    private double price;
-    private String size;
     private String type;
+    private String size;
+    private double price;
 
-    public Side(double price, String size, String type) {
-        this.price = price;
-        this.size = size;
+    public Side(String type, String size, double price) {
         this.type = type;
+        this.size = size;
+        this.price = price;
     }
 
     public String getSize() {
