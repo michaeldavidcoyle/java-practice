@@ -13,5 +13,14 @@ public class BillsBurgers {
     public static void main(String[] args) {
         Meal billsCombo = new Meal();
         billsCombo.printOrder();
+
+        Meal customMeal = new Meal();
+        customMeal.getBurger().customize("patty", "add");
+        customMeal.getBurger().customize("cheese", "add");
+        customMeal.getBurger().customize("bacon", "add");
+        customMeal.getBurger().customize("lettuce", "hold");
+        customMeal.getBurger().customize("onion", "extra");
+        customMeal.getBurger().customize("jalepeno", "extra");
+        customMeal.printOrder();
     }
 }

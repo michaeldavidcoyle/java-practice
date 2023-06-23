@@ -20,4 +20,28 @@ public class Meal {
         double total = burger.total() + side.getPrice() + drink.getPrice();
         System.out.printf("Total.....$%.2f%n", total);
     }
+
+    public Burger getBurger() {
+        return burger;
+    }
+
+    public void setBurger(Burger burger) {
+        this.burger = burger;
+    }
+
+    public Side getSide() {
+        return side;
+    }
+
+    public void setSide(Side side) {
+        this.side = side;
+    }
+
+    public Drink getDrink() {
+        return drink;
+    }
+
+    public void setDrink(Drink drink) {
+        this.drink = drink;
+    }
 }
