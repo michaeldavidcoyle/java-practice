@@ -20,7 +20,7 @@ public class Burger {
     protected static double costPerCheeseSlice = 0.65;
     protected static double costPerBacon = 0.90;
     protected static double costPerAvocado = 1.75;
-    protected static double costPerJalepeno = 0.75;
+    protected static double costPerJalepeno = 0.55;
 
     public Burger(String type, double basePrice) {
         this.type = type;
@@ -46,11 +46,11 @@ public class Burger {
     }
 
     public String toppings() {
-        String patty = extraPatties > 0 ? String.format("%dx patty.....$%.2f%n", extraPatties, addCharge("patty") * extraPatties) : "";
-        String cheese = cheeseSlices > 0 ? String.format("%dx cheese.....$%.2f%n", cheeseSlices, addCharge("cheese") * cheeseSlices) : "";
-        String bacon = baconSlices > 0 ? String.format("%dx bacon.....$%.2f%n", baconSlices, addCharge("bacon") * baconSlices) : "";
-        String avocado = avocadoPortions > 0 ? String.format("%dx avocado.....%.2f%n", avocadoPortions, addCharge("avocado") * avocadoPortions) : "";
-        String jalepeno = jalepenoPortions > 0 ? String.format("%dx jalepeno.....%.2f%n", jalepenoPortions, addCharge("jalepeno") * jalepenoPortions) : "";
+        String patty = extraPatties > 0 ? String.format("%dx patty.....$%.2f%n", extraPatties, addCharge("patty")) : "";
+        String cheese = cheeseSlices > 0 ? String.format("%dx cheese.....$%.2f%n", cheeseSlices, addCharge("cheese")) : "";
+        String bacon = baconSlices > 0 ? String.format("%dx bacon.....$%.2f%n", baconSlices, addCharge("bacon")) : "";
+        String avocado = avocadoPortions > 0 ? String.format("%dx avocado.....%.2f%n", avocadoPortions, addCharge("avocado")) : "";
+        String jalepeno = jalepenoPortions > 0 ? String.format("%dx jalepeno.....%.2f%n", jalepenoPortions, addCharge("jalepeno")) : "";
         String mayo = this.mayo.isEmpty() ? "" : String.format("%s.....$0.00%n", this.mayo);
         String mustard = this.mustard.isEmpty() ? "" : String.format("%s.....$0.00%n", this.mustard);
         String lettuce = this.lettuce.isEmpty() ? "" : String.format("%s.....$0.00%n", this.lettuce);
