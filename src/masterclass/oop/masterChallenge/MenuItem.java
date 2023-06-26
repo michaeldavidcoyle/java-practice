@@ -6,6 +6,13 @@ public class MenuItem {
     private double price;
     private String size = "MEDIUM";
 
+    protected static double single = 5.95;
+    protected static double deluxe = 6.95;
+    protected static double mediumFries = 2.75;
+    protected static double tea = 1.95;
+    protected static double soda = 2.45;
+    protected static double lemonade = 3.49;
+
     public MenuItem(String type, String name, double price) {
         this.type = type.toUpperCase();
         this.name = name.toUpperCase();
