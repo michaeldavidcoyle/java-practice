@@ -1,153 +1,96 @@
 package masterclass.oop.masterChallenge;
 
-public class Burger {
-    private String type;
-    private double basePrice;
-    private int extraPatties;
-    private int cheeseSlices;
-    private int baconSlices;
-    private int avocadoPortions;
-    private int jalepenoPortions;
-    private String mayo = "mayo";
-    private String mustard = "mustard";
-    private String lettuce = "lettuce";
-    private String tomato = "tomato";
-    private String onion = "onion";
-    private String pickle = "";
-    private String customTopping = "";
-    private boolean deluxe;
+public class Burger extends MenuItem {
+    private MenuItem mayo = new MenuItem("TOPPING", "MAYO", 0d);
+    private MenuItem mustard = new MenuItem("TOPPING", "MUSTARD", 0d);
+    private MenuItem lettuce = new MenuItem("TOPPING", "LETTUCE", 0d);
+    private MenuItem tomato = new MenuItem("TOPPING", "TOMATO", 0d);
+    private MenuItem onion = new MenuItem("TOPPING", "ONION", 0d);
+    private MenuItem extraTopping1;
+    private MenuItem extraTopping2;
+    private MenuItem extraTopping3;
 
     protected static double costPerExtraPatty = 2.75;
     protected static double costPerCheeseSlice = 0.65;
-    protected static double costPerBacon = 0.90;
+    protected static double costPerBacon = 1.25;
+    protected static double costPerEgg = 0.75;
     protected static double costPerAvocado = 1.75;
     protected static double costPerJalepeno = 0.55;
 
-    public Burger(String type, double basePrice) {
-        this.type = type;
-        this.basePrice = basePrice;
+    public Burger(String name, double price) {
+        super("BURGER", name, price);
     }
 
-    public void customize(String item, String level) {
-        boolean extra = level.equals("extra");
-        boolean light = level.equals("light") || level.equals("easy");
-        switch (item) {
-            case "patty" -> extraPatties = extra ? 2 : 1;
-            case "cheese" -> cheeseSlices = extra ? 2 : 1;
-            case "bacon" -> baconSlices = extra ? 6 : 3;
-            case "avocado" -> avocadoPortions = extra ? 2 : 1;
-            case "jalepeno" -> jalepenoPortions = extra ? 2 : 1;
-            case "mayo" -> mayo = extra ? "extra mayo" : (light ? "light mayo" : "");
-            case "mustard" -> mustard = extra ? "extra mustard" : (light ? "light mustard" : "");
-            case "lettuce" -> lettuce = extra ? "extra lettuce" : (light ? "light lettuce" : "");
-            case "tomato" -> tomato = extra ? "extra tomato" : (light ? "light tomato" : "");
-            case "onion" -> onion = extra ? "extra onion" : (light ? "light onion" : "");
-            case "pickle" -> pickle = extra ? "extra pickle" : "pickle";
-            default -> customTopping = extra ? ("extra " + item) : item;
+    @Override
+    public String getName() {
+        return super.getName() + " BURGER";
+    }
+
+    @Override
+    public void printItem() {
+        super.printItem();
+        if (getName().contains("BURGER")) {
+            if (extraTopping1 != null) extraTopping1.printItem();
+            if (extraTopping2 != null) extraTopping2.printItem();
+            if (extraTopping3 != null) extraTopping3.printItem();
+            if (!mayo.getSize().equals("MEDIUM")) mayo.printItem();
+            if (!mustard.getSize().equals("MEDIUM")) mustard.printItem();
+            if (!lettuce.getSize().equals("MEDIUM")) lettuce.printItem();
+            if (!tomato.getSize().equals("MEDIUM")) tomato.printItem();
+            if (!onion.getSize().equals("MEDIUM")) onion.printItem();
         }
     }
 
-    public String toppings() {
-        if (deluxe) {
-            cheeseSlices++;
-            baconSlices++;
+    public void addToppings(String topping) {
+        if (extraTopping1 == null) {
+            extraTopping1 = new MenuItem("ADDED TOPPING", "+ " + topping, addedCharge(topping));
+        } else if (extraTopping2 == null) {
+            extraTopping2 = new MenuItem("ADDED TOPPING", "+ " + topping, addedCharge(topping));
+        } else if (extraTopping3 == null) {
+            extraTopping3 = new MenuItem("ADDED TOPPING", "+ " + topping, addedCharge(topping));
         }
-        String patty = extraPatties > 0 ? String.format("%dx patty.....$%.2f%n", extraPatties, addCharge("patty")) : "";
-        String cheese = cheeseSlices > 0 ? String.format("%dx cheese.....$%.2f%n", cheeseSlices, addCharge("cheese")) : "";
-        String bacon = baconSlices > 0 ? String.format("%dx bacon.....$%.2f%n", baconSlices, addCharge("bacon")) : "";
-        String avocado = avocadoPortions > 0 ? String.format("%dx avocado.....%.2f%n", avocadoPortions, addCharge("avocado")) : "";
-        String jalepeno = jalepenoPortions > 0 ? String.format("%dx jalepeno.....%.2f%n", jalepenoPortions, addCharge("jalepeno")) : "";
-        String mayo = this.mayo.isEmpty() ? "" : String.format("%s.....$0.00%n", this.mayo);
-        String mustard = this.mustard.isEmpty() ? "" : String.format("%s.....$0.00%n", this.mustard);
-        String lettuce = this.lettuce.isEmpty() ? "" : String.format("%s.....$0.00%n", this.lettuce);
-        String tomato = this.tomato.isEmpty() ? "" : String.format("%s.....$0.00%n", this.tomato);
-        String onion = this.onion.isEmpty() ? "" : String.format("%s.....$0.00%n", this.onion);
-        String pickle = this.pickle.isEmpty() ? "" : String.format("%s.....$0.00%n", this.pickle);
-        String custom = this.customTopping.isEmpty() ? "" : String.format("%s.....$0.00%n", this.customTopping);
-
-        return patty + cheese + bacon + avocado + jalepeno + mayo + mustard + lettuce + tomato + onion + pickle + custom;
     }
 
-    public double total() {
-        double extras = addCharge("patty") +
-                addCharge("cheese") +
-                addCharge("bacon") +
-                addCharge("avocado") +
-                addCharge("jalepeno");
-        return basePrice + extras;
+    public void addToppings(String topping1, String topping2, String topping3) {
+        extraTopping1 = new MenuItem("ADDED TOPPING", "+ " + topping1, addedCharge(topping1));
+        extraTopping2 = new MenuItem("ADDED TOPPING", "+ " + topping2, addedCharge(topping2));
+        extraTopping3 = new MenuItem("ADDED TOPPING", "+ " + topping3, addedCharge(topping3));
     }
 
-    protected double addCharge(String item) {
-        int cheese = deluxe ? cheeseSlices - 1 : cheeseSlices;
-        int bacon = deluxe ? baconSlices - 1 : baconSlices;
-        return switch (item) {
-            case "patty" -> costPerExtraPatty * extraPatties;
-            case "cheese" -> costPerCheeseSlice * cheese;
-            case "bacon" -> costPerBacon * bacon;
-            case "avocado" -> costPerAvocado * avocadoPortions;
-            case "jalepeno" -> costPerJalepeno * jalepenoPortions;
+    protected double addedCharge(String toppingName) {
+        return switch (toppingName.toUpperCase()) {
+            case "PATTY" -> costPerExtraPatty;
+            case "CHEESE" -> costPerCheeseSlice;
+            case "BACON" -> costPerBacon;
+            case "EGG" -> costPerEgg;
+            case "AVOCADO" -> costPerAvocado;
+            case "JALEPENO" -> costPerJalepeno;
             default -> 0d;
         };
     }
 
-    public void printOrder() {
-        System.out.printf("%s.....$%.2f%n%s%n", type, basePrice, toppings());
-//        System.out.printf("Subtotal: $%.2f%n", total());
+    public void customize(MenuItem item, String level) {
+        item.setType("CUSTOM");
+        item.setSize(level);
     }
 
-    public int getExtraPatties() {
-        return extraPatties;
-    }
-
-    public int getCheeseSlices() {
-        return cheeseSlices;
-    }
-
-    public int getBaconSlices() {
-        return baconSlices;
-    }
-
-    public int getAvocadoPortions() {
-        return avocadoPortions;
-    }
-
-    public int getJalepenoPortions() {
-        return jalepenoPortions;
-    }
-
-    public String getMayo() {
+    public MenuItem getMayo() {
         return mayo;
     }
 
-    public String getMustard() {
+    public MenuItem getMustard() {
         return mustard;
     }
 
-    public String getLettuce() {
+    public MenuItem getLettuce() {
         return lettuce;
     }
 
-    public String getTomato() {
+    public MenuItem getTomato() {
         return tomato;
     }
 
-    public String getOnion() {
+    public MenuItem getOnion() {
         return onion;
-    }
-
-    public String getPickle() {
-        return pickle;
-    }
-
-    public String getCustomTopping() {
-        return customTopping;
-    }
-
-    public boolean isDeluxe() {
-        return deluxe;
-    }
-
-    public void setDeluxe(boolean deluxe) {
-        this.deluxe = deluxe;
     }
 }

@@ -33,7 +33,7 @@ public class MenuItem {
     }
 
     public String getName() {
-        if (type.equals("SIDE") || type.equals("DRINK")) {
+        if (type.equals("CUSTOM") || type.equals("SIDE") || type.equals("DRINK")) {
             return size + " " + name;
         }
 
@@ -44,7 +44,15 @@ public class MenuItem {
         return price;
     }
 
+    public String getSize() {
+        return size;
+    }
+
     public void setSize(String size) {
         this.size = size.toUpperCase();
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

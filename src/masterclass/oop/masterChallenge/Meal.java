@@ -17,15 +17,15 @@ public class Meal {
         drink = new Drink("soda", "medium", BillsBurgers.soda);
     }
 
-    public void printOrder() {
-        burger.printOrder();
-        side.printOrder();
-        drink.printOrder();
-        System.out.println();
-
-        double total = burger.total() + side.getPrice() + drink.getPrice();
-        System.out.printf("Total.....$%.2f%n", total);
-    }
+//    public void printOrder() {
+//        burger.printOrder();
+//        side.printOrder();
+//        drink.printOrder();
+//        System.out.println();
+//
+//        double total = burger.total() + side.getPrice() + drink.getPrice();
+//        System.out.printf("Total.....$%.2f%n", total);
+//    }
 
     public Burger getBurger() {
         return burger;

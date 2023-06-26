@@ -34,9 +34,12 @@ public class BillsBurgers {
 //        deluxeMeal.getBurger().customize("jalepeno", "add");
 //        deluxeMeal.printOrder();
 
-        MenuItem burger = new MenuItem("burger", "Bill's Burger", 7.95);
+        Burger burger = new Burger("bill's", 6.95);
+        burger.addToppings("bacon");
+        burger.addToppings("cheese");
         MenuItem fries = new MenuItem("side", "fries", 2.95);
         MenuItem soda = new MenuItem("drink", "dr pepper", 2.5);
+        burger.customize(burger.getMayo(), "light");
         burger.printItem();
         fries.printItem();
         soda.printItem();
