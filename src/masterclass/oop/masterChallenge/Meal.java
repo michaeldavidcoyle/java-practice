@@ -2,30 +2,30 @@ package masterclass.oop.masterChallenge;
 
 public class Meal {
     private Burger burger;
-    private Side side;
-    private Drink drink;
+    private MenuItem side;
+    private MenuItem drink;
 
     public Meal() {
-        burger = new Burger("Bill Burger",  BillsBurgers.single);
-        side = new Side("fries", "medium", BillsBurgers.mediumFries);
-        drink = new Drink("soda", "medium", BillsBurgers.soda);
+        burger = new Burger("Bill's",  MenuItem.single);
+        side = new MenuItem("SIDE", "FRIES", MenuItem.mediumFries);
+        drink = new MenuItem("DRINK", "SODA", MenuItem.soda);
     }
 
     public Meal(Burger burger) {
         this.burger = burger;
-        side = new Side("fries", "medium", BillsBurgers.mediumFries);
-        drink = new Drink("soda", "medium", BillsBurgers.soda);
+        side = new MenuItem("SIDE", "FRIES", MenuItem.mediumFries);
+        drink = new MenuItem("DRINK", "SODA", MenuItem.soda);
     }
 
-//    public void printOrder() {
-//        burger.printOrder();
-//        side.printOrder();
-//        drink.printOrder();
-//        System.out.println();
-//
-//        double total = burger.total() + side.getPrice() + drink.getPrice();
-//        System.out.printf("Total.....$%.2f%n", total);
-//    }
+    public void printOrder() {
+        burger.printItem();
+        side.printItem();
+        drink.printItem();
+        System.out.println("-".repeat(32));
+
+        double total = burger.getAdjustedPrice() + side.getAdjustedPrice() + drink.getAdjustedPrice();
+        MenuItem.printItem("TOTAL", total);
+    }
 
     public Burger getBurger() {
         return burger;
@@ -35,19 +35,19 @@ public class Meal {
         this.burger = burger;
     }
 
-    public Side getSide() {
+    public MenuItem getSide() {
         return side;
     }
 
-    public void setSide(Side side) {
+    public void setSide(MenuItem side) {
         this.side = side;
     }
 
-    public Drink getDrink() {
+    public MenuItem getDrink() {
         return drink;
     }
 
-    public void setDrink(Drink drink) {
+    public void setDrink(MenuItem drink) {
         this.drink = drink;
     }
 }
