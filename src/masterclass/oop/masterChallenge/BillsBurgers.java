@@ -5,7 +5,7 @@ public class BillsBurgers {
         Meal billsCombo = new Meal();
         billsCombo.addBurgerToppings("bacon");
         billsCombo.addBurgerToppings("cheese");
-        billsCombo.customizeBurger(billsCombo.getBurger().getLettuce(), "light");
+        billsCombo.customizeBurger("lettuce", "light");
         billsCombo.printOrder();
         System.out.println();
     }

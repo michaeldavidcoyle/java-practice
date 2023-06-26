@@ -42,7 +42,15 @@ public class Meal {
         drink.setSize(size);
     }
 
-    public void customizeBurger(MenuItem item, String level) {
+    public void customizeBurger(String itemName, String level) {
+        MenuItem item = switch (itemName.toUpperCase()) {
+            case "MAYO" -> burger.getMayo();
+            case "MUSTARD" -> burger.getMustard();
+            case "LETTUCE" -> burger.getLettuce();
+            case "TOMATO" -> burger.getTomato();
+            case "ONION" -> burger.getOnion();
+            default -> null;
+        };
         burger.customize(item, level);
     }
 

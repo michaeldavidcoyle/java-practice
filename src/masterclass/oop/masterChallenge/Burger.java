@@ -89,6 +89,7 @@ public class Burger extends MenuItem {
     }
 
     public void customize(MenuItem item, String level) {
+        if (item == null) return;
         item.setType("CUSTOM");
         item.setSize(level);
     }
