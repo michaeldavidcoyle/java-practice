@@ -8,5 +8,10 @@ public class BillsBurgers {
         billsCombo.customizeBurger("lettuce", "light");
         billsCombo.printOrder();
         System.out.println();
+
+        Meal meal = new Meal("bill's", "onion rings", "sweet tea");
+        meal.addBurgerToppings("cheese");
+        meal.setDrinkSize("large");
+        meal.printOrder();
     }
 }

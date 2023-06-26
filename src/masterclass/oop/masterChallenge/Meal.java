@@ -11,8 +11,13 @@ public class Meal {
 
     public Meal(String burgerType, String sideType, String drinkType) {
         this.burger = new Burger(burgerType, MenuItem.single);
-        side = new MenuItem("SIDE", "FRIES", MenuItem.mediumFries);
-        drink = new MenuItem("DRINK", "SODA", MenuItem.soda);
+        side = new MenuItem("SIDE", sideType, MenuItem.mediumFries);
+        double drinkPrice = switch (drinkType.toUpperCase()) {
+            case "TEA", "UNSWEET TEA", "SWEET TEA" -> MenuItem.tea;
+            case "LEMONADE" -> MenuItem.lemonade;
+            default -> MenuItem.soda;
+        };
+        drink = new MenuItem("DRINK", drinkType, drinkPrice);
     }
 
     public double getTotal() {
