@@ -6,15 +6,17 @@ public class Meal {
     private MenuItem drink;
 
     public Meal() {
-        burger = new Burger("Bill's",  MenuItem.single);
+        this("Bill's",  "fries", "soda");
+    }
+
+    public Meal(String burgerType, String sideType, String drinkType) {
+        this.burger = new Burger(burgerType, MenuItem.single);
         side = new MenuItem("SIDE", "FRIES", MenuItem.mediumFries);
         drink = new MenuItem("DRINK", "SODA", MenuItem.soda);
     }
 
-    public Meal(Burger burger) {
-        this.burger = burger;
-        side = new MenuItem("SIDE", "FRIES", MenuItem.mediumFries);
-        drink = new MenuItem("DRINK", "SODA", MenuItem.soda);
+    public double getTotal() {
+        return burger.getAdjustedPrice() + side.getAdjustedPrice() + drink.getAdjustedPrice();
     }
 
     public void printOrder() {
@@ -22,9 +24,7 @@ public class Meal {
         side.printItem();
         drink.printItem();
         System.out.println("-".repeat(32));
-
-        double total = burger.getAdjustedPrice() + side.getAdjustedPrice() + drink.getAdjustedPrice();
-        MenuItem.printItem("TOTAL", total);
+        MenuItem.printItem("TOTAL", getTotal());
     }
 
     public Burger getBurger() {
