@@ -9,6 +9,7 @@ public class Burger extends MenuItem {
     private MenuItem extraTopping1;
     private MenuItem extraTopping2;
     private MenuItem extraTopping3;
+    private double extraCost = 0d;
 
     protected static double costPerExtraPatty = 2.75;
     protected static double costPerCheeseSlice = 0.65;
@@ -58,15 +59,33 @@ public class Burger extends MenuItem {
     }
 
     protected double addedCharge(String toppingName) {
-        return switch (toppingName.toUpperCase()) {
-            case "PATTY" -> costPerExtraPatty;
-            case "CHEESE" -> costPerCheeseSlice;
-            case "BACON" -> costPerBacon;
-            case "EGG" -> costPerEgg;
-            case "AVOCADO" -> costPerAvocado;
-            case "JALEPENO" -> costPerJalepeno;
-            default -> 0d;
-        };
+        switch (toppingName.toUpperCase()) {
+            case "PATTY" -> {
+                extraCost += costPerExtraPatty;
+                return costPerExtraPatty;
+            }
+            case "CHEESE" -> {
+                extraCost += costPerCheeseSlice;
+                return costPerCheeseSlice;
+            }
+            case "BACON" -> {
+                extraCost += costPerBacon;
+                return costPerBacon;
+            }
+            case "EGG" -> {
+                extraCost += costPerEgg;
+                return costPerEgg;
+            }
+            case "AVOCADO" -> {
+                extraCost += costPerAvocado;
+                return costPerAvocado;
+            }
+            case "JALEPENO" -> {
+                extraCost += costPerJalepeno;
+                return costPerJalepeno;
+            }
+            default -> { return 0d; }
+        }
     }
 
     public void customize(MenuItem item, String level) {
@@ -92,5 +111,9 @@ public class Burger extends MenuItem {
 
     public MenuItem getOnion() {
         return onion;
+    }
+
+    public double getExtraCost() {
+        return extraCost;
     }
 }
