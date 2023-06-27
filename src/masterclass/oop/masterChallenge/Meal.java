@@ -10,7 +10,11 @@ public class Meal {
     }
 
     public Meal(String burgerType, String sideType, String drinkType) {
-        this.burger = new Burger(burgerType, MenuItem.single);
+        if (burgerType.equalsIgnoreCase("deluxe")) {
+            this.burger = new DeluxeBurger("DELUXE", MenuItem.deluxeCombo);
+        } else {
+            this.burger = new Burger(burgerType, MenuItem.single);
+        }
         side = new MenuItem("SIDE", sideType, MenuItem.mediumFries);
         double drinkPrice = switch (drinkType.toUpperCase()) {
             case "TEA", "UNSWEET TEA", "SWEET TEA" -> MenuItem.tea;
@@ -21,6 +25,10 @@ public class Meal {
     }
 
     public double getTotal() {
+        if (burger instanceof DeluxeBurger) {
+            return burger.getAdjustedPrice();
+        }
+
         return burger.getAdjustedPrice() +
                 burger.getExtraCost() +
                 side.getAdjustedPrice() +
@@ -29,8 +37,13 @@ public class Meal {
 
     public void printOrder() {
         burger.printItem();
-        side.printItem();
-        drink.printItem();
+        if (burger instanceof DeluxeBurger) {
+            MenuItem.printItem(side.getName(), 0d);
+            MenuItem.printItem(drink.getName(), 0d);
+        } else {
+            side.printItem();
+            drink.printItem();
+        }
         System.out.println("-".repeat(32));
         MenuItem.printItem("TOTAL", getTotal());
     }
@@ -41,6 +54,20 @@ public class Meal {
 
     public void addBurgerToppings(String topping1, String topping2, String topping3) {
         burger.addToppings(topping1, topping2, topping3);
+    }
+
+    public void addBurgerToppings(
+            String topping1,
+            String topping2,
+            String topping3,
+            String topping4,
+            String topping5
+    ) {
+        if (burger instanceof DeluxeBurger deluxeBurger) {
+            deluxeBurger.addToppings(topping1, topping2, topping3, topping4, topping5);
+        } else {
+            burger.addToppings(topping1, topping2, topping3);
+        }
     }
 
     public void setDrinkSize(String size) {

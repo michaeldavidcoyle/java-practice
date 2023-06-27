@@ -7,7 +7,7 @@ public class MenuItem {
     private String size = "MEDIUM";
 
     protected static double single = 5.95;
-    protected static double deluxe = 6.95;
+    protected static double deluxeCombo = 12.95;
     protected static double mediumFries = 2.75;
     protected static double tea = 1.95;
     protected static double soda = 2.45;
