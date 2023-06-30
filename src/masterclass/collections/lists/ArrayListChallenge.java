@@ -14,7 +14,7 @@ public class ArrayListChallenge {
     };
     private static ArrayList<String> groceries = new ArrayList<>();
 
-    private static void menu() {
+    private static void printMenu() {
         for (int index = 0; index < options.length; index++) {
             System.out.printf("%d - %s%n", index, options[index]);
         }
@@ -63,7 +63,7 @@ public class ArrayListChallenge {
     public static void main(String[] args) {
         int selectedNumber;
         do {
-            menu();
+            printMenu();
             selectedNumber = getUserChoice();
 
             String[] items;
