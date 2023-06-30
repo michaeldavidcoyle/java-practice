@@ -2,11 +2,12 @@ package masterclass.collections.lists;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class ArrayListChallenge {
-    private static Scanner scanner = new Scanner(System.in);
-    private static String[] options = {
+    private final static Scanner scanner = new Scanner(System.in);
+    private final static String[] options = {
             "to shutdown",
             "to add item(s) to list (comma delimited list)",
             "to remove any items (comma delimited list)"
@@ -22,8 +23,7 @@ public class ArrayListChallenge {
 
     private static int getUserChoice() {
         try {
-            int choice = Integer.parseInt(scanner.nextLine());
-            return choice;
+            return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException nfe) {
             return -1;
         }
@@ -50,9 +50,7 @@ public class ArrayListChallenge {
     }
 
     private static void removeItems(String[] items) {
-        for (String item : items) {
-            groceries.remove(item);
-        }
+        groceries.removeAll(List.of(items));
         printGroceries();
     }
 
