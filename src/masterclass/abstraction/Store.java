@@ -36,9 +36,9 @@ public class Store {
         double total = 0d;
         System.out.println("Sales Receipt: ");
         for (OrderItem item : order) {
-            ProductForSale product = item.getProduct();
-            product.printPriceLineItem(item.getQuantity());
-            total += product.salesPrice(item.getQuantity());
+            ProductForSale product = item.product();
+            product.printPriceLineItem(item.quantity());
+            total += product.salesPrice(item.quantity());
         }
         String amount = String.format("$%.2f", total);
         System.out.println("-".repeat(32));
