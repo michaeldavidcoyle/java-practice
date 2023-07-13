@@ -1,7 +1,7 @@
 package challenges;
 
-import java.sql.Array;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class SameDigits {
     /*
@@ -41,12 +41,16 @@ public class SameDigits {
 
     public static void main(String[] args) {
         int[] testIntegers = {
+                24,
                 230,
-                49710,
+                1281,
                 4510,
+                49710,
                 12345,
                 54321,
-                21345670
+                120_000,
+                1_010_000,
+                21_345_670
         };
 
         for (int integer : testIntegers) {
