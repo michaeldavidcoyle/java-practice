@@ -31,8 +31,33 @@ public class AnagramChecker {
     }
 
     public static void main(String[] args) {
-        System.out.println("deco is an anagram of code: " + isAnagram("deco", "code"));
-        System.out.println("last is an anagram of nope: " + isAnagram("last", "nope"));
-        System.out.println("Louis Friend is an anagram of iron sulfide: " + isAnagram("Louis Friend", "iron sulfide"));
+        String a1 = "deco";
+        String a2 = "code";
+
+        String b1 = "last";
+        String b2 = "nope";
+
+        String c1 = "Louis Friend";
+        String c2 = "iron sulfide";
+
+        String d1 = "funeral";
+        String d2 = "real fun";
+
+        String e1 = "forty-five";
+        String e2 = "over fifty";
+
+        String f1 = "Tom Marvolo Riddle";
+        String f2 = "I am Lord Voldemort";
+
+        String g1 = "gentleman";
+        String g2 = "elegent man";
+
+        System.out.printf("\"%s\" is an anagram of \"%s\": %s%n", a1, a2, isAnagram(a1, a2)); // true
+        System.out.printf("\"%s\" is an anagram of \"%s\": %s%n", b1, b2, isAnagram(b1, b2)); // false
+        System.out.printf("\"%s\" is an anagram of \"%s\": %s%n", c1, c2, isAnagram(c1, c2)); // true
+        System.out.printf("\"%s\" is an anagram of \"%s\": %s%n", d1, d2, isAnagram(d1, d2)); // true
+        System.out.printf("\"%s\" is an anagram of \"%s\": %s%n", e1, e2, isAnagram(e1, e2)); // true
+        System.out.printf("\"%s\" is an anagram of \"%s\": %s%n", f1, f2, isAnagram(f1, f2)); // true
+        System.out.printf("\"%s\" is an anagram of \"%s\": %s%n", g1, g2, isAnagram(g1, g2)); // false
     }
 }
