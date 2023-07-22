@@ -13,6 +13,10 @@ package masterclass.abstraction.interfaces;
 */
 
 interface FlightEnabled {
+    // There is no such thing as instance fields on an interface.
+    // All fields declared on an interface are final and static.
+    double MILES_TO_KM = 1.60934;
+    double KM_TO_MILES = 0.621371;
     public abstract void takeOff(); // public modifier is redundant as all interface methods are implicitly public
     abstract void land(); // abstract modifier is redundant for interfaces
     void fly();
